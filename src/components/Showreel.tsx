@@ -25,7 +25,7 @@ export const Showreel: React.FC = () => {
             <Play className="w-8 h-8 fill-current ml-1" />
           </motion.button>
           
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">2025 SHOWREEL</h2>
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">GOLDEN HOUR</h2>
           <p className="text-white/60 font-mono text-sm tracking-widest uppercase">Cinematic Environment & Asset Design</p>
         </div>
 
