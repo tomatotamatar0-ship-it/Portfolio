@@ -10,7 +10,7 @@ export const Showreel: React.FC = () => {
         
         {/* Placeholder for video */}
         <img 
-                  src="https://www.linkedin.com/posts/ahmad-ali-8a46392a4_environmentdesign-3dmodeling-gameart-activity-7431027781855076352-3mYN?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFy3KewB-fAYhg_tprhYsNz1TyBCEBJhFxE" 
+            src="https://www.artstation.com/artwork/kNb80n" 
           alt="Showreel Thumbnail"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           referrerPolicy="no-referrer"
@@ -25,7 +25,7 @@ export const Showreel: React.FC = () => {
             <Play className="w-8 h-8 fill-current ml-1" />
           </motion.button>
           
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">GOLDEN HOUR</h2>
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">2025 SHOWREEL</h2>
           <p className="text-white/60 font-mono text-sm tracking-widest uppercase">Cinematic Environment & Asset Design</p>
         </div>
 
