@@ -1,155 +1,87 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, MousePointer2, Linkedin, ExternalLink, Phone, Mail, X } from 'lucide-react';
-import { Hero3D } from './Hero3D';
-import { cn } from '../lib/utils';
+import React, { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Float, MeshDistortMaterial, Sphere, Stars } from '@react-three/drei';
+import { motion } from 'motion/react';
+import { ChevronDown } from 'lucide-react';
+
+const Scene = () => {
+  return (
+    <>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} intensity={1} />
+      <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={1} color="#a855f7" />
+      
+      <Float speed={2} rotationIntensity={1} floatIntensity={1}>
+        <Sphere args={[1, 64, 64]} scale={2}>
+          <MeshDistortMaterial
+            color="#a855f7"
+            attach="material"
+            distort={0.4}
+            speed={2}
+            roughness={0.2}
+            metalness={0.8}
+          />
+        </Sphere>
+      </Float>
+
+      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+    </>
+  );
+};
 
 export const Hero: React.FC = () => {
-  const [showProfileOptions, setShowProfileOptions] = useState(false);
-  const [showContactInfo, setShowContactInfo] = useState(false);
-
-  const profileLinks = [
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/ahmad-ali-8a46392a4', color: 'text-blue-400' },
-    { name: 'ArtStation', icon: ExternalLink, href: 'https://ahmadali01.artstation.com', color: 'text-orange-400' },
-  ];
-
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      <Hero3D />
-      
-      <div className="relative z-10 text-center px-6">
+      {/* 3D Background */}
+      <div className="absolute inset-0 z-0">
+        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+          <Suspense fallback={null}>
+            <Scene />
+            <OrbitControls enableZoom={false} enablePan={false} />
+          </Suspense>
+        </Canvas>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest uppercase bg-white/5 border border-white/10 rounded-full backdrop-blur-sm text-purple-400">
-            Available for new projects
-          </span>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black tracking-tighter mb-6 leading-[0.9]">
-            <span className="text-3xl md:text-5xl block mb-4 text-white/40 tracking-normal font-light">AHMAD ALI</span>
-            CREATING <br />
-            <span className="text-gradient">DIGITAL WORLDS</span>
+          <h2 className="text-accent-purple font-mono text-sm tracking-widest uppercase mb-4">
+            Welcome to my creative space
+          </h2>
+          <h1 className="text-6xl md:text-8xl font-display font-bold mb-6 tracking-tighter">
+            AHMAD <span className="text-accent-purple">ALI</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/60 font-light mb-10">
-            3D Artist | Character & Environment Designer | Prop Specialist. Creating immersive game assets from high-poly sculpting to real-time optimization.
+          <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl mx-auto mb-10">
+            3D Artist | Game Asset Designer | Environment Creator
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative">
-            <div className="relative">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setShowProfileOptions(!showProfileOptions)}
-                className="group px-8 py-4 bg-white text-black rounded-full font-bold flex items-center gap-2 transition-all hover:bg-purple-500 hover:text-white"
-              >
-                View Profile
-                <ArrowRight className={cn("w-5 h-5 transition-transform", showProfileOptions ? "rotate-90" : "group-hover:translate-x-1")} />
-              </motion.button>
-
-              <AnimatePresence>
-                {showProfileOptions && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute top-full left-0 mt-4 w-56 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl z-50"
-                  >
-                    {profileLinks.map((link) => (
-                      <a
-                        key={link.name}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition-colors group"
-                      >
-                        <link.icon className={cn("w-5 h-5", link.color)} />
-                        <span className="text-sm font-bold">{link.name}</span>
-                      </a>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <div className="relative">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setShowContactInfo(!showContactInfo)}
-                className="px-8 py-4 bg-white/5 border border-white/10 rounded-full font-bold backdrop-blur-md hover:bg-white/10 transition-all"
-              >
-                Contact Me
-              </motion.button>
-
-              <AnimatePresence>
-                {showContactInfo && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute top-full right-0 sm:left-0 mt-4 w-72 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl z-50 text-left"
-                  >
-                    <div className="flex justify-between items-center mb-6">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10">
-                          <img 
-                            src="https://picsum.photos/seed/ahmad/200/200" 
-                            alt="Ahmad Ali" 
-                            className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-black uppercase tracking-widest text-purple-400">Ahmad Ali</h4>
-                          <p className="text-[10px] text-white/30 font-bold">3D Environment Artist</p>
-                        </div>
-                      </div>
-                      <button onClick={() => setShowContactInfo(false)} className="text-white/30 hover:text-white">
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                          <Mail className="w-4 h-4 text-blue-400" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] text-white/30 uppercase font-bold">Email</p>
-                          <p className="text-sm font-medium">tomatotamatar0@gmail.com</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                          <Phone className="w-4 h-4 text-green-400" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] text-white/30 uppercase font-bold">Phone</p>
-                          <p className="text-sm font-medium">+92 323 4909029</p>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="px-8 py-4 bg-accent-purple hover:bg-accent-purple/80 text-white rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent-purple/20">
+              View Portfolio
+            </button>
+            <button className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full font-medium transition-all backdrop-blur-sm">
+              Contact Me
+            </button>
           </div>
         </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+      <motion.div 
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-purple-500 to-transparent" />
+        <span className="text-white/40 text-xs font-mono uppercase tracking-widest">Scroll</span>
+        <ChevronDown className="text-white/40 w-5 h-5" />
       </motion.div>
 
-      {/* Floating Particles Overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.05)_0%,transparent_50%)]" />
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-[#050505]" />
     </section>
   );
 };

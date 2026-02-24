@@ -1,100 +1,94 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Wind, Droplets, Sun, Snowflake, Sparkles } from 'lucide-react';
+import { Wind, Droplets, Sun, Smartphone } from 'lucide-react';
+
+const ShaderCard = ({ icon: Icon, title, description, delay }: { icon: any, title: string, description: string, delay: number }) => (
+  <motion.div
+    initial={{ opacity: 0, x: -20 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ delay }}
+    viewport={{ once: true }}
+    className="flex items-start gap-4 p-6 glass-panel glow-border"
+  >
+    <div className="p-3 bg-accent-blue/10 rounded-xl text-accent-blue">
+      <Icon className="w-6 h-6" />
+    </div>
+    <div>
+      <h4 className="text-lg font-display font-semibold mb-1">{title}</h4>
+      <p className="text-white/60 text-sm">{description}</p>
+    </div>
+  </motion.div>
+);
 
 export const Shaders: React.FC = () => {
   return (
-    <section id="shaders" className="py-24 px-6 relative overflow-hidden bg-[#050505]">
-      {/* Animated Background Gradient */}
-      <div className="absolute inset-0 opacity-20">
-        <motion.div
-          animate={{
-            background: [
-              'radial-gradient(circle at 20% 30%, #a855f7 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 70%, #3b82f6 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 50%, #06b6d4 0%, transparent 50%)',
-              'radial-gradient(circle at 20% 30%, #a855f7 0%, transparent 50%)',
-            ],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-          className="w-full h-full"
-        />
+    <section className="relative py-24 overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 via-transparent to-accent-purple/20 animate-pulse" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/30 rounded-full blur-[120px] animate-blob" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/30 rounded-full blur-[120px] animate-blob animation-delay-2000" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-6xl font-display font-black mb-8">
-              REAL-TIME <br />
-              <span className="text-gradient">SHADER MAGIC</span>
-            </h2>
+          <div>
+            <h2 className="text-accent-blue font-mono text-sm tracking-widest uppercase mb-2">Technical Art</h2>
+            <h3 className="text-4xl md:text-5xl font-display font-bold mb-6">REAL-TIME SHADERS & UNITY WORK</h3>
             <p className="text-white/60 text-lg mb-10 leading-relaxed">
-              Pushing the boundaries of real-time rendering in Unity URP. From procedural foliage movement to complex water simulations, I create shaders that bring game worlds to life.
+              Beyond modeling, I specialize in creating performant real-time shaders for Unity URP. 
+              My focus is on bringing life to environments through dynamic foliage, water systems, 
+              and seasonal variations.
             </p>
 
-            <div className="space-y-6">
-              {[
-                { icon: Wind, title: 'Wind Foliage System', desc: 'GPU-instanced wind movement for large-scale forests.' },
-                { icon: Droplets, title: 'Stylized Water Shader', desc: 'Dynamic foam, depth-based transparency, and vertex waves.' },
-                { icon: Sun, title: 'Seasonal Transition', desc: 'Global shader system for smooth transitions between seasons.' },
-                { icon: Sparkles, title: 'VFX & Particles', desc: 'Custom particle shaders for magical and environmental effects.' },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
-                    <item.icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-1">{item.title}</h3>
-                    <p className="text-white/40 text-sm">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <ShaderCard 
+                icon={Droplets} 
+                title="Water Shader" 
+                description="Optimized stylized water with depth-based coloring and foam."
+                delay={0.1}
+              />
+              <ShaderCard 
+                icon={Wind} 
+                title="Wind Foliage" 
+                description="GPU-based vertex animation for realistic grass and tree movement."
+                delay={0.2}
+              />
+              <ShaderCard 
+                icon={Sun} 
+                title="Seasonal System" 
+                description="Dynamic material swapping and tinting based on game seasons."
+                delay={0.3}
+              />
+              <Smartphone 
+                className="hidden" // Just to keep the icon import used if needed
+              />
+              <ShaderCard 
+                icon={Smartphone} 
+                title="Mobile Assets" 
+                description="Highly optimized assets specifically for mobile performance."
+                delay={0.4}
+              />
             </div>
-          </motion.div>
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group"
+            className="relative aspect-square glass-panel overflow-hidden group"
           >
-            <img
-              src="https://picsum.photos/seed/shader-demo/1000/1000"
-              alt="Shader Demo"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]"
+            <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-transparent" />
+            <img 
+              src="https://picsum.photos/seed/shader/1000/1000" 
+              alt="Shader Preview"
+              className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            
-            <div className="absolute bottom-10 left-10 right-10">
-              <div className="flex items-center justify-between mb-4">
-                <span className="px-3 py-1 rounded-full bg-purple-500 text-[10px] font-black uppercase tracking-widest">Live Preview</span>
-                <div className="flex gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-[10px] text-white/50 font-bold uppercase">Unity URP</span>
-                </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="px-6 py-3 bg-black/50 backdrop-blur-md border border-white/10 rounded-full text-sm font-mono">
+                LIVE PREVIEW: WIND FOLIAGE
               </div>
-              <h3 className="text-2xl font-display font-bold mb-2">Interactive Foliage Demo</h3>
-              <p className="text-white/60 text-sm">Move your mouse to interact with the wind simulation.</p>
-            </div>
-
-            {/* Interactive Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-sm">
-              <button className="px-8 py-4 bg-white text-black rounded-full font-bold flex items-center gap-2">
-                Launch WebGL Demo
-                <Sparkles className="w-4 h-4" />
-              </button>
             </div>
           </motion.div>
         </div>
