@@ -16,6 +16,24 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: 'Cozy Stylized Environment',
+    category: 'Environment Design',
+    image: 'https://picsum.photos/seed/cozy/800/600',
+    description: 'A magical world where rain, autumn leaves, and fireflies coexist. Created to capture a relaxing and moody vibe, prioritizing atmosphere and artistic freedom.',
+    software: ['Maya', 'Substance Painter', 'Unity'],
+    tags: ['Stylized', 'VFX', 'Atmospheric'],
+  },
+  {
+    id: 2,
+    title: 'Stylized Character: Blue Guardian',
+    category: 'Character Art',
+    image: 'https://picsum.photos/seed/bluehead/800/600',
+    description: 'A unique stylized character design featuring a Moai-inspired aesthetic with organic elements. Focused on clean forms and vibrant color palettes.',
+    software: ['ZBrush', 'Maya', 'Substance Painter'],
+    tags: ['Stylized', 'Character', 'Sculpting'],
+  },
+  {
+    id: 3,
     title: 'The Dead 2',
     category: 'Horror Game Assets',
     image: 'https://picsum.photos/seed/dead2/800/600',
@@ -24,7 +42,7 @@ const projects: Project[] = [
     tags: ['Horror', 'Environment', 'Characters'],
   },
   {
-    id: 2,
+    id: 4,
     title: 'Car For Sale',
     category: 'Vehicle Modeling',
     image: 'https://picsum.photos/seed/carforsale/800/600',
@@ -33,7 +51,7 @@ const projects: Project[] = [
     tags: ['Simulation', 'Vehicles', 'PBR'],
   },
   {
-    id: 3,
+    id: 5,
     title: 'Call of Sniper',
     category: 'Weapon Props',
     image: 'https://picsum.photos/seed/sniper/800/600',
@@ -42,7 +60,7 @@ const projects: Project[] = [
     tags: ['FPS', 'Weapons', 'Tactical'],
   },
   {
-    id: 4,
+    id: 6,
     title: 'Dreadful Whispers',
     category: 'Horror Environment',
     image: 'https://picsum.photos/seed/whispers/800/600',
@@ -50,25 +68,17 @@ const projects: Project[] = [
     software: ['ZBrush', 'Blender', 'Substance Designer'],
     tags: ['Horror', 'Props', 'Stylized'],
   },
-  {
-    id: 5,
-    title: 'Real Car Race 3D',
-    category: 'Racing Environment',
-    image: 'https://picsum.photos/seed/race3d/800/600',
-    description: 'Optimized racing tracks and car assets for a high-speed mobile racing game. Focused on performance and visual appeal.',
-    software: ['Blender', 'Unity', 'Photoshop'],
-    tags: ['Racing', 'Optimization', 'Mobile'],
-  },
-  {
-    id: 6,
-    title: 'Counter Shooting',
-    category: 'Tactical Props',
-    image: 'https://picsum.photos/seed/counter/800/600',
-    description: 'Tactical environment props and weapon sets for "Counter Shooting Terrorist Strike". Optimized for mobile platforms.',
-    software: ['Maya', 'Substance Painter', 'Unity'],
-    tags: ['Tactical', 'Props', 'Mobile'],
-  },
 ];
+
+const getSoftwareIcon = (name: string) => {
+  const n = name.toLowerCase();
+  if (n.includes('maya')) return <Box className="w-3 h-3" />;
+  if (n.includes('blender')) return <Zap className="w-3 h-3" />;
+  if (n.includes('substance')) return <Palette className="w-3 h-3" />;
+  if (n.includes('unity')) return <Layers className="w-3 h-3" />;
+  if (n.includes('zbrush')) return <Box className="w-3 h-3" />;
+  return <Box className="w-3 h-3" />;
+};
 
 export const Portfolio: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -119,10 +129,11 @@ export const Portfolio: React.FC = () => {
                   {project.category}
                 </span>
                 <h3 className="text-2xl font-display font-bold mb-2">{project.title}</h3>
-                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                  {project.tags.slice(0, 2).map(tag => (
-                    <span key={tag} className="text-[10px] px-2 py-1 rounded bg-white/10 text-white/70">
-                      {tag}
+                <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  {project.software.slice(0, 3).map(s => (
+                    <span key={s} className="text-[10px] px-2 py-1 rounded bg-white/10 text-white/70 flex items-center gap-1">
+                      {getSoftwareIcon(s)}
+                      {s}
                     </span>
                   ))}
                 </div>
@@ -204,7 +215,8 @@ export const Portfolio: React.FC = () => {
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.software.map(s => (
-                        <span key={s} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">
+                        <span key={s} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium flex items-center gap-2">
+                          {getSoftwareIcon(s)}
                           {s}
                         </span>
                       ))}

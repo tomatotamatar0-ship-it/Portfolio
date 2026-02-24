@@ -4,22 +4,22 @@ import { Download, Calendar, Briefcase, GraduationCap } from 'lucide-react';
 
 const timeline = [
   {
-    year: '2022 - Present',
+    year: 'Feb 2025 - Present',
+    role: '3D Environment Artist',
+    company: 'Markhor Games',
+    desc: 'Creating high-quality environment assets and immersive worlds for upcoming titles. Focused on stylized art direction and real-time optimization.',
+  },
+  {
+    year: 'Mar 2024 - Present',
+    role: '3D Environment Artist',
+    company: 'BRIC Games',
+    desc: 'Designing modular environment kits, lighting, and rendering. Contributing to the visual identity of multiple game projects.',
+  },
+  {
+    year: '2022 - 2024',
     role: 'Senior 3D Artist',
     company: 'Artrei Technologies',
-    desc: 'Leading the creation of immersive environments, AR/VR assets, and high-quality CGI for various projects.',
-  },
-  {
-    year: '2020 - 2022',
-    role: 'Lead 3D Designer',
-    company: 'CGI Studio',
-    desc: 'Managed a team of designers to deliver high-end 3D visualizations and game assets. Focused on pipeline optimization.',
-  },
-  {
-    year: '2018 - 2020',
-    role: '3D Modeler & Texture Artist',
-    company: 'Creative Agency',
-    desc: 'Specialized in high-poly sculpting and PBR texturing for marketing and game assets.',
+    desc: 'Led the creation of AR/VR assets and high-quality CGI. Managed asset pipelines and ensured technical performance.',
   },
 ];
 
@@ -36,8 +36,8 @@ export const About: React.FC = () => {
           >
             <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10">
               <img
-                src="https://picsum.photos/seed/artist/800/1000"
-                alt="Artist Portrait"
+                src="https://picsum.photos/seed/ahmad-artist/800/1000"
+                alt="Ahmad Ali"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -64,7 +64,7 @@ export const About: React.FC = () => {
               <span className="text-gradient">BEHIND THE MESH</span>
             </h2>
             <p className="text-white/60 text-lg mb-6 leading-relaxed">
-              I am a passionate and detail-oriented 3D Artist with hands-on experience in the game development pipeline, from high-poly sculpting to real-time optimization. I specialize in creating immersive 3D characters, game environments, and props that align with both artistic vision and technical performance.
+              I am a <span className="text-white font-medium">Senior 3D Environment Artist</span> currently working at <span className="text-purple-400 font-medium">Markhor Games</span>. With over 6 years of experience in the industry, I specialize in creating immersive, stylized worlds that blend artistic vision with technical precision.
             </p>
             
             <div className="mb-8 space-y-4">
@@ -80,7 +80,7 @@ export const About: React.FC = () => {
             </div>
 
             <p className="text-white/60 text-lg mb-12 leading-relaxed">
-              Whether it’s bringing a character to life, setting the mood with an environment, or building props that players interact with, I ensure that every asset is visually compelling and game-ready. I work comfortably in both stylized and realistic styles, and thrive in collaborative, feedback-driven environments.
+              My journey has taken me through studios like <span className="text-white">BRIC Games</span> and <span className="text-white">Artrei Technologies</span>, where I've honed my skills in high-poly sculpting, modular environment design, and real-time optimization. I believe that 3D art is the ultimate medium for bending the rules of nature to create magical experiences.
             </p>
 
             <div className="space-y-10 mb-12">

@@ -27,6 +27,7 @@ export const Hero: React.FC = () => {
             Available for new projects
           </span>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black tracking-tighter mb-6 leading-[0.9]">
+            <span className="text-3xl md:text-5xl block mb-4 text-white/40 tracking-normal font-light">AHMAD ALI</span>
             CREATING <br />
             <span className="text-gradient">DIGITAL WORLDS</span>
           </h1>
@@ -89,8 +90,21 @@ export const Hero: React.FC = () => {
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     className="absolute top-full right-0 sm:left-0 mt-4 w-72 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl z-50 text-left"
                   >
-                    <div className="flex justify-between items-center mb-4">
-                      <h4 className="text-xs font-black uppercase tracking-widest text-purple-400">Contact Details</h4>
+                    <div className="flex justify-between items-center mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10">
+                          <img 
+                            src="https://picsum.photos/seed/ahmad/200/200" 
+                            alt="Ahmad Ali" 
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-black uppercase tracking-widest text-purple-400">Ahmad Ali</h4>
+                          <p className="text-[10px] text-white/30 font-bold">3D Environment Artist</p>
+                        </div>
+                      </div>
                       <button onClick={() => setShowContactInfo(false)} className="text-white/30 hover:text-white">
                         <X className="w-4 h-4" />
                       </button>
