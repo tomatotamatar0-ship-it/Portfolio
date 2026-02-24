@@ -37,7 +37,7 @@ export const Navbar: React.FC = () => {
           animate={{ opacity: 1, x: 0 }}
           className="text-2xl font-display font-bold tracking-tighter"
         >
-          AETHERIA<span className="text-purple-500">.</span>
+          AHMAD ALI<span className="text-purple-500">.</span>
         </motion.div>
 
         {/* Desktop Nav */}
@@ -54,7 +54,8 @@ export const Navbar: React.FC = () => {
               {link.name}
             </motion.a>
           ))}
-          <motion.button
+          <motion.a
+            href="#contact"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.05 }}
@@ -62,7 +63,7 @@ export const Navbar: React.FC = () => {
             className="px-5 py-2 bg-purple-600 hover:bg-purple-500 rounded-full text-sm font-bold transition-all shadow-lg shadow-purple-500/20"
           >
             Hire Me
-          </motion.button>
+          </motion.a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -94,7 +95,7 @@ export const Navbar: React.FC = () => {
                   {link.name}
                 </a>
               ))}
-              <button className="w-full py-3 bg-purple-600 rounded-xl font-bold">Hire Me</button>
+              <a href="#contact" className="w-full py-3 bg-purple-600 rounded-xl font-bold text-center" onClick={() => setIsMobileMenuOpen(false)}>Hire Me</a>
             </div>
           </motion.div>
         )}

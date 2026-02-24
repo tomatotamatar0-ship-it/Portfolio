@@ -16,57 +16,57 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Stylized Game Coins',
-    category: 'Game Assets',
-    image: 'https://picsum.photos/seed/coins/800/600',
-    description: 'A set of high-quality stylized coins for mobile and PC games. Optimized for performance with custom shaders.',
-    software: ['Blender', 'Substance Painter', 'Unity'],
-    tags: ['Stylized', 'Low Poly', 'PBR'],
+    title: 'The Dead 2',
+    category: 'Horror Game Assets',
+    image: 'https://picsum.photos/seed/dead2/800/600',
+    description: 'Immersive horror environment and character assets for "The Dead 2". Focused on atmospheric lighting and high-fidelity textures.',
+    software: ['Maya', 'ZBrush', 'Substance Painter', 'Unity'],
+    tags: ['Horror', 'Environment', 'Characters'],
   },
   {
     id: 2,
-    title: 'Treasure Chest',
-    category: 'Environment Prop',
-    image: 'https://picsum.photos/seed/chest/800/600',
-    description: 'Interactive treasure chest with opening animations and particle effects. Designed for a fantasy RPG.',
-    software: ['Maya', 'ZBrush', 'Substance Painter'],
-    tags: ['Fantasy', 'Animated', 'Hero Prop'],
+    title: 'Car For Sale',
+    category: 'Vehicle Modeling',
+    image: 'https://picsum.photos/seed/carforsale/800/600',
+    description: 'Realistic vehicle modeling and texturing for a car dealership simulation game. Optimized for real-time performance.',
+    software: ['Blender', 'Substance Painter', 'Unity'],
+    tags: ['Simulation', 'Vehicles', 'PBR'],
   },
   {
     id: 3,
-    title: 'Wind Foliage System',
-    category: 'Shaders',
-    image: 'https://picsum.photos/seed/foliage/800/600',
-    description: 'Custom URP shader for realistic wind movement in foliage. Supports seasonal color changes.',
-    software: ['Unity', 'HLSL', 'Shader Graph'],
-    tags: ['Real-time', 'Optimization', 'VFX'],
+    title: 'Call of Sniper',
+    category: 'Weapon Props',
+    image: 'https://picsum.photos/seed/sniper/800/600',
+    description: 'Detailed weapon models and tactical environment assets for a mobile FPS game. High-poly to low-poly workflow.',
+    software: ['Maya', 'Substance Painter', 'Arnold'],
+    tags: ['FPS', 'Weapons', 'Tactical'],
   },
   {
     id: 4,
-    title: 'Cyberpunk Alley',
-    category: 'Environment',
-    image: 'https://picsum.photos/seed/cyber/800/600',
-    description: 'A fully realized cyberpunk environment scene with neon lighting and volumetric fog.',
-    software: ['Blender', 'Unreal Engine 5', 'Substance'],
-    tags: ['Sci-Fi', 'Environment', 'Lighting'],
+    title: 'Dreadful Whispers',
+    category: 'Horror Environment',
+    image: 'https://picsum.photos/seed/whispers/800/600',
+    description: 'Character and prop design for "Dreadful Whispers: The Doll\'s Malevolence". Creating a chilling and immersive experience.',
+    software: ['ZBrush', 'Blender', 'Substance Designer'],
+    tags: ['Horror', 'Props', 'Stylized'],
   },
   {
     id: 5,
-    title: 'Guardian Character',
-    category: 'Character Art',
-    image: 'https://picsum.photos/seed/char/800/600',
-    description: 'Stylized character model with full rigging and basic animations. Optimized for mobile games.',
-    software: ['ZBrush', 'Blender', 'Marvelous Designer'],
-    tags: ['Character', 'Rigged', 'Stylized'],
+    title: 'Real Car Race 3D',
+    category: 'Racing Environment',
+    image: 'https://picsum.photos/seed/race3d/800/600',
+    description: 'Optimized racing tracks and car assets for a high-speed mobile racing game. Focused on performance and visual appeal.',
+    software: ['Blender', 'Unity', 'Photoshop'],
+    tags: ['Racing', 'Optimization', 'Mobile'],
   },
   {
     id: 6,
-    title: 'Ancient Ruins',
-    category: 'Environment',
-    image: 'https://picsum.photos/seed/ruins/800/600',
-    description: 'Modular environment kit for creating ancient temple ruins. Includes stone, moss, and vine assets.',
-    software: ['Blender', 'Unity', 'Substance Designer'],
-    tags: ['Modular', 'Environment', 'Historical'],
+    title: 'Counter Shooting',
+    category: 'Tactical Props',
+    image: 'https://picsum.photos/seed/counter/800/600',
+    description: 'Tactical environment props and weapon sets for "Counter Shooting Terrorist Strike". Optimized for mobile platforms.',
+    software: ['Maya', 'Substance Painter', 'Unity'],
+    tags: ['Tactical', 'Props', 'Mobile'],
   },
 ];
 
@@ -227,9 +227,14 @@ export const Portfolio: React.FC = () => {
                 </div>
 
                 <div className="mt-auto">
-                  <button className="w-full py-4 bg-white text-black rounded-2xl font-bold hover:bg-purple-500 hover:text-white transition-all">
+                  <a 
+                    href="https://ahmadali01.artstation.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full py-4 bg-white text-black rounded-2xl font-bold hover:bg-purple-500 hover:text-white transition-all flex items-center justify-center"
+                  >
                     View Project on ArtStation
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>

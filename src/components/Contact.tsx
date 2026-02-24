@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Send, Mail, Linkedin, Twitter, Github, Instagram } from 'lucide-react';
+import { Send, Mail, Linkedin, ExternalLink, Github, Instagram, Phone } from 'lucide-react';
 
 export const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'Game Asset Inquiry',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const mailtoUrl = `mailto:tomatotamatar0@gmail.com?subject=${encodeURIComponent(formData.subject + ' - ' + formData.name)}&body=${encodeURIComponent('From: ' + formData.name + ' (' + formData.email + ')\n\n' + formData.message)}`;
+    window.location.href = mailtoUrl;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <section id="contact" className="py-24 px-6 bg-black relative overflow-hidden">
       {/* Decorative Glow */}
@@ -26,22 +46,35 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-xs text-white/30 uppercase font-black tracking-widest mb-1">Email Me</p>
-                  <p className="text-xl font-bold">hello@aetheria.art</p>
+                  <p className="text-xl font-bold">tomatotamatar0@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 group">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500 transition-all">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-xs text-white/30 uppercase font-black tracking-widest mb-1">Call Me</p>
+                  <p className="text-xl font-bold">+92 323 4909029</p>
                 </div>
               </div>
 
               <div className="flex gap-4">
                 {[
-                  { icon: Linkedin, href: '#' },
-                  { icon: Twitter, href: '#' },
-                  { icon: Github, href: '#' },
-                  { icon: Instagram, href: '#' },
+                  { icon: Linkedin, href: 'https://linkedin.com/in/ahmad-ali-8a46392a4', label: 'LinkedIn' },
+                  { icon: ExternalLink, href: 'https://ahmadali01.artstation.com', label: 'ArtStation' },
+                  { icon: Github, href: '#', label: 'GitHub' },
+                  { icon: Instagram, href: '#', label: 'Instagram' },
                 ].map((social, i) => (
                   <motion.a
                     key={i}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ y: -5, scale: 1.1 }}
                     className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all"
+                    title={social.label}
                   >
                     <social.icon className="w-5 h-5" />
                   </motion.a>
@@ -56,12 +89,16 @@ export const Contact: React.FC = () => {
             viewport={{ once: true }}
             className="p-8 md:p-12 glass rounded-[3rem]"
           >
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-black uppercase tracking-widest text-white/30 ml-2">Name</label>
                   <input
                     type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="John Doe"
                     className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500 transition-colors"
                   />
@@ -70,6 +107,10 @@ export const Contact: React.FC = () => {
                   <label className="text-xs font-black uppercase tracking-widest text-white/30 ml-2">Email</label>
                   <input
                     type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="john@example.com"
                     className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500 transition-colors"
                   />
@@ -78,7 +119,12 @@ export const Contact: React.FC = () => {
               
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-white/30 ml-2">Subject</label>
-                <select className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500 transition-colors appearance-none">
+                <select 
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500 transition-colors appearance-none"
+                >
                   <option>Game Asset Inquiry</option>
                   <option>Shader Development</option>
                   <option>Environment Design</option>
@@ -89,13 +135,20 @@ export const Contact: React.FC = () => {
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-white/30 ml-2">Message</label>
                 <textarea
+                  name="message"
+                  required
                   rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Tell me about your project..."
                   className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500 transition-colors resize-none"
                 />
               </div>
 
-              <button className="w-full py-5 bg-white text-black rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-purple-500 hover:text-white transition-all">
+              <button 
+                type="submit"
+                className="w-full py-5 bg-white text-black rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-purple-500 hover:text-white transition-all"
+              >
                 Send Message
                 <Send className="w-5 h-5" />
               </button>

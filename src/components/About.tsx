@@ -4,22 +4,22 @@ import { Download, Calendar, Briefcase, GraduationCap } from 'lucide-react';
 
 const timeline = [
   {
-    year: '2023 - Present',
+    year: '2022 - Present',
     role: 'Senior 3D Artist',
-    company: 'Nova Games Studio',
-    desc: 'Leading asset creation for high-fidelity mobile RPGs. Developing custom URP shaders and optimizing pipelines.',
+    company: 'Artrei Technologies',
+    desc: 'Leading the creation of immersive environments, AR/VR assets, and high-quality CGI for various projects.',
   },
   {
-    year: '2021 - 2023',
-    role: 'Game Asset Designer',
-    company: 'Pixel Forge Interactive',
-    desc: 'Created stylized environment kits and hero props. Collaborated with technical artists on shader development.',
+    year: '2020 - 2022',
+    role: 'Lead 3D Designer',
+    company: 'CGI Studio',
+    desc: 'Managed a team of designers to deliver high-end 3D visualizations and game assets. Focused on pipeline optimization.',
   },
   {
-    year: '2019 - 2021',
-    role: 'Junior 3D Modeler',
-    company: 'Creative Labs',
-    desc: 'Focused on low-poly modeling and PBR texturing for indie game projects.',
+    year: '2018 - 2020',
+    role: '3D Modeler & Texture Artist',
+    company: 'Creative Agency',
+    desc: 'Specialized in high-poly sculpting and PBR texturing for marketing and game assets.',
   },
 ];
 
@@ -50,8 +50,8 @@ export const About: React.FC = () => {
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center font-black text-xl">A</div>
                 <div>
-                  <h4 className="font-bold">Aetheria Design</h4>
-                  <p className="text-xs text-white/50">Est. 2018</p>
+                  <h4 className="font-bold">Ahmad Ali</h4>
+                  <p className="text-xs text-white/50">3D Artist</p>
                 </div>
               </div>
               <p className="text-sm text-white/70 italic">"Bringing imagination to life through pixels and polygons."</p>
@@ -63,8 +63,24 @@ export const About: React.FC = () => {
               THE ARTIST <br />
               <span className="text-gradient">BEHIND THE MESH</span>
             </h2>
+            <p className="text-white/60 text-lg mb-6 leading-relaxed">
+              I am a passionate and detail-oriented 3D Artist with hands-on experience in the game development pipeline, from high-poly sculpting to real-time optimization. I specialize in creating immersive 3D characters, game environments, and props that align with both artistic vision and technical performance.
+            </p>
+            
+            <div className="mb-8 space-y-4">
+              <h4 className="text-purple-400 font-bold uppercase tracking-widest text-xs">My Expertise</h4>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white/60 text-sm">
+                <li className="flex gap-2"><span className="text-purple-500">▹</span> <span><strong>Character Modeling:</strong> Realistic & stylized characters with clean topology.</span></li>
+                <li className="flex gap-2"><span className="text-purple-500">▹</span> <span><strong>Environment Art:</strong> Modular & optimized game-ready environments.</span></li>
+                <li className="flex gap-2"><span className="text-purple-500">▹</span> <span><strong>Prop Modeling:</strong> High-quality assets from weapons to interactives.</span></li>
+                <li className="flex gap-2"><span className="text-purple-500">▹</span> <span><strong>UV Unwrapping:</strong> Clean & efficient UVs for minimal distortion.</span></li>
+                <li className="flex gap-2"><span className="text-purple-500">▹</span> <span><strong>Texturing:</strong> Hand-painted & PBR textures (Substance, Photoshop).</span></li>
+                <li className="flex gap-2"><span className="text-purple-500">▹</span> <span><strong>Rendering:</strong> Presentation using Arnold, Cycles, and Unity.</span></li>
+              </ul>
+            </div>
+
             <p className="text-white/60 text-lg mb-12 leading-relaxed">
-              I'm a passionate 3D Artist and Game Asset Designer with over 5 years of experience in creating immersive digital experiences. My work blends technical precision with artistic flair, focusing on stylized aesthetics and real-time optimization.
+              Whether it’s bringing a character to life, setting the mood with an environment, or building props that players interact with, I ensure that every asset is visually compelling and game-ready. I work comfortably in both stylized and realistic styles, and thrive in collaborative, feedback-driven environments.
             </p>
 
             <div className="space-y-10 mb-12">

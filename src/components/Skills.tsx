@@ -8,14 +8,14 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'Blender', level: 95, color: 'bg-orange-500' },
-  { name: 'Unity (URP/HDRP)', level: 90, color: 'bg-white' },
-  { name: 'Substance Painter', level: 85, color: 'bg-red-500' },
-  { name: 'ZBrush', level: 80, color: 'bg-zinc-400' },
-  { name: 'Photoshop', level: 85, color: 'bg-blue-500' },
-  { name: 'Mobile Optimization', level: 90, color: 'bg-green-500' },
-  { name: 'Game UI Assets', level: 75, color: 'bg-purple-500' },
-  { name: 'Unreal Engine', level: 70, color: 'bg-blue-400' },
+  { name: 'Character Modeling', level: 95, color: 'bg-purple-500' },
+  { name: 'Environment Art', level: 90, color: 'bg-blue-500' },
+  { name: 'Prop Modeling', level: 95, color: 'bg-cyan-500' },
+  { name: 'UV Unwrapping', level: 85, color: 'bg-emerald-500' },
+  { name: 'Texturing (PBR/Hand-painted)', level: 90, color: 'bg-orange-500' },
+  { name: 'Rendering (Arnold/Cycles)', level: 85, color: 'bg-red-500' },
+  { name: 'Unity Engine', level: 80, color: 'bg-white' },
+  { name: 'Photoshop', level: 85, color: 'bg-blue-600' },
 ];
 
 export const Skills: React.FC = () => {
@@ -55,7 +55,7 @@ export const Skills: React.FC = () => {
 
         {/* Software Icons Grid */}
         <div className="mt-24 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-8 opacity-30 hover:opacity-100 transition-opacity duration-500">
-          {['Blender', 'Unity', 'Maya', 'Substance', 'ZBrush', 'Unreal'].map((software) => (
+          {['Blender', 'Unity', 'Maya', 'Substance', 'Arnold', 'Photoshop'].map((software) => (
             <div key={software} className="flex flex-col items-center gap-4 grayscale hover:grayscale-0 transition-all">
               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
                 <span className="text-[10px] font-black uppercase tracking-widest">{software}</span>

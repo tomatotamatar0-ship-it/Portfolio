@@ -4,21 +4,21 @@ import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
+    name: 'Ahmad Ali',
+    role: '3D Artist & CGI Specialist',
+    text: 'My passion lies in creating digital worlds that feel alive. I strive for the perfect balance between artistic vision and technical performance in every asset I build.',
+    rating: 5,
+  },
+  {
     name: 'Sarah Jenkins',
-    role: 'Art Director @ Nova Games',
-    text: 'Aetheria is a rare talent. Their ability to translate concept art into optimized, beautiful game assets is unmatched. The shaders they built for our latest project were a game-changer.',
+    role: 'Art Director',
+    text: 'Ahmad has a rare talent for translating vision into optimized, beautiful game assets. His attention to detail in topology and texturing is exceptional.',
     rating: 5,
   },
   {
     name: 'Marcus Thorne',
-    role: 'Lead Developer @ Pixel Forge',
-    text: 'Working with Aetheria was a breeze. They understand the technical constraints of mobile games while never compromising on visual quality. Highly recommended for any game project.',
-    rating: 5,
-  },
-  {
-    name: 'Elena Rodriguez',
-    role: 'Indie Game Creator',
-    text: 'The environment kit Aetheria created for my project was stunning. Every piece fit perfectly, and the performance was incredible even on lower-end devices.',
+    role: 'Lead Developer',
+    text: 'Working with Ahmad was a breeze. He understands the technical constraints of game engines while never compromising on visual quality.',
     rating: 5,
   },
 ];
