@@ -10,7 +10,7 @@ export const Showreel: React.FC = () => {
         
         {/* Placeholder for video */}
         <img 
-            src="https://www.artstation.com/artwork/kNb80n" 
+          src="https://www.artstation.com/artwork/kNb80n" 
           alt="Showreel Thumbnail"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           referrerPolicy="no-referrer"
